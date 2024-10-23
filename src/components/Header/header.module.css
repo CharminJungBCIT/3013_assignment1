@@ -7,6 +7,7 @@
   position: relative;
 }
 
+/* Form for adding new assignments */
 .newAssignmentForm {
   position: absolute;
   height: 54px;
@@ -48,8 +49,9 @@
 }
 
 .newAssignmentForm button:disabled {
-  background-color: #ccc; 
-  cursor: not-allowed; 
-  color: #666; 
-  border: 1px solid #999; 
+  background-color: #ccc;
+  cursor: not-allowed;
+  color: #666;
+  border: 1px solid #999;
 }
+/* header.module.css */

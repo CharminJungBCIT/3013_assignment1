@@ -1,6 +1,6 @@
-import React from 'react';
-import { TAssignment } from '../../types/types';
-import styles from './assignment.module.css';
+import React, { useState } from "react";
+import { TAssignment } from "../../types/types";
+import styles from "./assignments.module.css";
 
 interface AssignmentsProps {
   assignmentList: TAssignment[];
@@ -8,6 +8,25 @@ interface AssignmentsProps {
 }
 
 export const Assignments: React.FC<AssignmentsProps> = ({ assignmentList, setAssignmentList }) => {
+  const [newAssignment, setNewAssignment] = useState("");
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNewAssignment(e.target.value);
+  };
+
+  const addAssignment = () => {
+    if (newAssignment.trim() === "") return;
+
+    const newAssignmentObj: TAssignment = {
+      id: Date.now(),
+      title: newAssignment,
+      completed: false,
+    };
+
+    setAssignmentList([...assignmentList, newAssignmentObj]);
+    setNewAssignment("");
+  };
+
   const toggleComplete = (id: number) => {
     setAssignmentList(
       assignmentList.map((assignment) =>
@@ -16,26 +35,32 @@ export const Assignments: React.FC<AssignmentsProps> = ({ assignmentList, setAss
     );
   };
 
-  return (
-    <div>
-      <header className={styles.header}>
-        <div>
-          <p>Created Assignments</p>
-          <span>{assignmentList.length}</span>
-        </div>
+  const createdAssignmentsCount = assignmentList.length;
+  const completedAssignmentsCount = assignmentList.filter(assignment => assignment.completed).length;
 
-        <div>
-          <p className={styles.textPurple}>Completed Assignments</p>
-          <span>{assignmentList.filter((a) => a.completed).length} of {assignmentList.length}</span>
-        </div>
-      </header>
-      <ul>
+  return (
+    <div className={styles.container}>
+      <input
+        type="text"
+        value={newAssignment}
+        onChange={handleInputChange}
+        placeholder="Enter assignment"
+        className={styles.inputField}
+      />
+      <button onClick={addAssignment} className={styles.button}>Create</button>
+      <div>
+        <p>Created Assignments: {createdAssignmentsCount}</p>
+        <p className={styles.textPurple}>Completed Assignments: {completedAssignmentsCount} of {createdAssignmentsCount}</p>
+        <span> 1 of 1</span>
+      </div>
+      <ul className={styles.List}>
         {assignmentList.map((assignment) => (
-          <li key={assignment.id} className={assignment.completed ? styles.completedText : ''}>
-            <span>{assignment.title}</span>
-            <button onClick={() => toggleComplete(assignment.id)}>
-              {assignment.completed ? 'Undo' : 'Complete'}
-            </button>
+          <li
+            key={assignment.id}
+            className={`${styles.assignmentItem} ${assignment.completed ? styles.completed : ""}`}
+            onClick={() => toggleComplete(assignment.id)}
+          >
+            {assignment.title}
           </li>
         ))}
       </ul>

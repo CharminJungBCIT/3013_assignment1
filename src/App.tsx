@@ -6,13 +6,9 @@ import { TAssignment } from "./types/types";
 function App() {
   const [assignmentList, setAssignmentList] = useState<TAssignment[]>([]);
 
-  const addAssignment = (assignment: TAssignment) => {
-    setAssignmentList([...assignmentList, assignment]);
-  };
-
   return (
     <>
-      <Header addAssignment={addAssignment} />
+      <Header setAssignmentList={setAssignmentList} />
       <Assignments assignmentList={assignmentList} setAssignmentList={setAssignmentList} />
     </>
   );

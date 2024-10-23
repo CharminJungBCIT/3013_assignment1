@@ -1,3 +1,53 @@
+/* General layout for assignment list */
+.assignments {
+  width: 100%;
+  max-width: 736px;
+  margin: 0 auto;
+  margin-top: 90px;
+  padding: 0 1rem;
+}
+
+/* Header at the top */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.header > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header p {
+  color: #4ea8de;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.textPurple {
+  color: #8284fa !important;
+}
+
+.header span {
+  background: #333333;
+  color: #d9d9d9;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Flexbox for assignment items */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Assignment Item Styling */
 .assignment {
   width: 100%;
   background: #262626;
@@ -22,6 +72,7 @@ p.textCompleted {
   text-decoration: line-through;
 }
 
+/* Styling for completed checkboxes and delete buttons */
 .checkContainer {
   width: 18px;
   height: 18px;
@@ -49,6 +100,7 @@ p.textCompleted {
   color: #808080;
   cursor: pointer;
 }
+
 .circle {
   width: 20px;
   height: 20px;
@@ -67,10 +119,7 @@ p.textCompleted {
   border-radius: 50%;
 }
 
-.completedText {
-  text-decoration: line-through;
-  opacity: 0.6;
-}
+
 .dueDateContainer {
   margin-left: 10px;
 }
@@ -85,3 +134,5 @@ p.textCompleted {
 .dueSoon {
   background-color: red;
 }
+
+
