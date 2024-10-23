@@ -9,7 +9,7 @@ interface AssignmentsProps {
 }
 
 export const Assignments: React.FC<AssignmentsProps> = ({ assignmentList, setAssignmentList }) => {
-  // Toggle the completed state of an assignment and update the list
+
   const toggleComplete = (id: number) => {
     setAssignmentList((prevAssignments) =>
       prevAssignments.map((assignment) =>

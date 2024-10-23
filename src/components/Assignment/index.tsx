@@ -38,9 +38,9 @@ export function Assignment({ assignment, setAssignmentList, toggleComplete, inde
     const timeDiff = dueDate.getTime() - today.getTime();
     const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
-    if (daysDiff < 0) return "Due: Now"; // Past due
-    if (daysDiff === 1) return "Tomorrow"; // One day left
-    return `${daysDiff} days left`; // More than one day left
+    if (daysDiff < 0) return "Due: Now"; 
+    if (daysDiff === 1) return "Tomorrow"; 
+    return `${daysDiff} days left`; 
   };
 
   const daysLeft = calculateDaysLeft();
