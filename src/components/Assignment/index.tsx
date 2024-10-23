@@ -8,6 +8,7 @@ import "react-day-picker/dist/style.css";
 type Props = {
   assignment: TAssignment;
   setAssignmentList: React.Dispatch<React.SetStateAction<TAssignment[]>>;
+  toggleComplete: (id: number) => void;
   index: number;
 };
 
@@ -42,13 +43,13 @@ export function Assignment({ assignment, setAssignmentList, index }: Props) {
     <div className={`${styles.assignment} ${isCompleted ? styles.completed : ""}`}>
       <button className={styles.checkContainer} onClick={handleCompletionToggle}>
         {isCompleted ? (
-          <div className={styles.checkmark}>✔</div>
+          <div className={`${styles.checkmark} ${styles.completed}`}>✔</div>
         ) : (
-          <div className={styles.circle} />
+          <div className={`${styles.circle}`} />
         )}
       </button>
 
-      <p className={isCompleted ? styles.completedText : ""}>{assignment.title}</p>
+      <p className={isCompleted ? styles.textCompleted : ""}>{assignment.title}</p>
 
       <div className={styles.dueDateContainer}>
         <DayPicker onDayClick={handleDateSelect} selected={dueDate} />

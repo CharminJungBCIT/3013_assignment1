@@ -1,65 +1,44 @@
-/* General layout for assignment list */
-.assignments {
-  width: 100%;
-  max-width: 736px;
-  margin: 0 auto;
-  margin-top: 90px;
-  padding: 0 1rem;
+/* Styling for completed checkboxes and delete buttons */
+.checkContainer {
+  width: 24px; /* Adjusted for better click area */
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-/* Header at the top */
-.header {
+/* Non-completed state circle */
+.checkContainer div {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #4ea8de; /* Blue border */
+  background: none; /* No fill */
+}
+
+/* Completed state styles */
+.checkmark {
+  width: 24px;
+  height: 24px;
+  background-color: purple; /* Filled purple background */
+  color: white; /* White checkmark color */
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 24px;
+  border-radius: 50%; /* Circle shape */
 }
 
-.header > div {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+/* Hide the circle when completed */
+.circle {
+  display: none; /* Hide the non-completed circle */
 }
 
-.header p {
-  color: #4ea8de;
-  font-size: 14px;
-  font-weight: 700;
+/* Change this class to apply when completed */
+.completed {
+  display: block; /* Ensure checkmark is displayed */
 }
 
-.textPurple {
-  color: #8284fa !important;
-}
-
-.header span {
-  background: #333333;
-  color: #d9d9d9;
-  padding: 3px 9px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-/* Flexbox for assignment items */
-.list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-/* Assignment Item Styling */
-.assignment {
-  width: 100%;
-  background: #262626;
-  border: 1px solid #333333;
-  padding: 16px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
+/* Assignments text styling */
 .assignment p {
   font-size: 14px;
   line-height: 19px;
@@ -67,33 +46,12 @@
   margin-right: auto;
 }
 
-p.textCompleted {
-  color: #808080;
-  text-decoration: line-through;
+.textCompleted {
+  color: #808080; /* Grey color for completed text */
+  text-decoration: line-through; /* Strikethrough for completed assignments */
 }
 
-/* Styling for completed checkboxes and delete buttons */
-.checkContainer {
-  width: 18px;
-  height: 18px;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.checkContainer div {
-  width: 100%;
-  height: 100%;
-  border-radius: 999px;
-  border: 2px solid #4ea8de;
-}
-
-.checkContainer svg {
-  width: 100%;
-  height: 100%;
-  color: #5e60ce;
-}
-
+/* Styling for the delete button */
 .deleteButton {
   background: none;
   border: none;
@@ -101,29 +59,7 @@ p.textCompleted {
   cursor: pointer;
 }
 
-.circle {
-  width: 20px;
-  height: 20px;
-  border: 2px solid blue;
-  border-radius: 50%;
-}
-
-.checkmark {
-  width: 20px;
-  height: 20px;
-  background-color: purple;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-}
-
-
-.dueDateContainer {
-  margin-left: 10px;
-}
-
+/* Due date bubble styles */
 .dueDateBubble {
   padding: 5px 10px;
   border-radius: 12px;
@@ -132,7 +68,5 @@ p.textCompleted {
 }
 
 .dueSoon {
-  background-color: red;
+  background-color: red; /* Red background for overdue */
 }
-
-
