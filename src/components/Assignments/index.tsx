@@ -9,9 +9,10 @@ interface AssignmentsProps {
 }
 
 export const Assignments: React.FC<AssignmentsProps> = ({ assignmentList, setAssignmentList }) => {
+  // Toggle the completed state of an assignment and update the list
   const toggleComplete = (id: number) => {
-    setAssignmentList(
-      assignmentList.map((assignment) =>
+    setAssignmentList((prevAssignments) =>
+      prevAssignments.map((assignment) =>
         assignment.id === id ? { ...assignment, completed: !assignment.completed } : assignment
       )
     );
@@ -24,16 +25,18 @@ export const Assignments: React.FC<AssignmentsProps> = ({ assignmentList, setAss
     <div className={styles.assignments}>
       <div className={styles.header}>
         <p>Created Assignments: {createdAssignmentsCount}</p>
-        <p className={styles.textPurple}>Completed Assignments: {completedAssignmentsCount} of {createdAssignmentsCount}</p>
-        <span> 1 of 1</span>
+        <p className={styles.textPurple}>
+          Completed Assignments: {completedAssignmentsCount} of {createdAssignmentsCount}
+        </p>
+        <span>1 of 1</span>
       </div>
-    
-      <ul className={styles.List}>
+
+      <ul className={styles.list}>
         {assignmentList.map((assignment, index) => (
           <Assignment
             key={assignment.id}
             assignment={assignment}
-            setAssignmentList={setAssignmentList} 
+            setAssignmentList={setAssignmentList}
             toggleComplete={toggleComplete}
             index={index}
           />

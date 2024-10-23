@@ -12,20 +12,24 @@ type Props = {
   index: number;
 };
 
-export function Assignment({ assignment, setAssignmentList, index }: Props) {
-  const [isCompleted, setIsCompleted] = useState(false);
-  const [dueDate, setDueDate] = useState<Date | undefined>();
+export function Assignment({ assignment, setAssignmentList, toggleComplete, index }: Props) {
+  const [dueDate, setDueDate] = useState<Date | undefined>(assignment.dueDate);
 
   const handleDelete = () => {
     setAssignmentList((prev) => prev.filter((_, i) => i !== index));
   };
 
   const handleCompletionToggle = () => {
-    setIsCompleted((prev) => !prev);
+    toggleComplete(assignment.id);
   };
 
   const handleDateSelect = (date: Date | undefined) => {
     setDueDate(date);
+    setAssignmentList((prev) =>
+      prev.map((item) =>
+        item.id === assignment.id ? { ...item, dueDate: date } : item
+      )
+    );
   };
 
   const calculateDaysLeft = () => {
@@ -34,33 +38,34 @@ export function Assignment({ assignment, setAssignmentList, index }: Props) {
     const timeDiff = dueDate.getTime() - today.getTime();
     const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
-    if (daysDiff < 0) return "Due: Now";
-    if (daysDiff === 1) return "Tomorrow";
-    return `${daysDiff} days left`;
+    if (daysDiff < 0) return "Due: Now"; // Past due
+    if (daysDiff === 1) return "Tomorrow"; // One day left
+    return `${daysDiff} days left`; // More than one day left
   };
 
+  const daysLeft = calculateDaysLeft();
+  const bubbleStyle = daysLeft === "Tomorrow"
+    ? styles.dueSoon
+    : daysLeft === "Due: Now"
+    ? styles.dueNow
+    : styles.dueDays;
+
   return (
-    <div className={`${styles.assignment} ${isCompleted ? styles.completed : ""}`}>
+    <div className={`${styles.assignment} ${assignment.completed ? styles.completed : ""}`}>
       <button className={styles.checkContainer} onClick={handleCompletionToggle}>
-        {isCompleted ? (
+        {assignment.completed ? (
           <div className={`${styles.checkmark} ${styles.completed}`}>✔</div>
         ) : (
           <div className={`${styles.circle}`} />
         )}
       </button>
 
-      <p className={isCompleted ? styles.textCompleted : ""}>{assignment.title}</p>
+      <p className={assignment.completed ? styles.textCompleted : ""}>{assignment.title}</p>
 
       <div className={styles.dueDateContainer}>
         <DayPicker onDayClick={handleDateSelect} selected={dueDate} />
-        <span
-          className={`${styles.dueDateBubble} ${
-            calculateDaysLeft() === "Tomorrow" || calculateDaysLeft() === "Due: Now"
-              ? styles.dueSoon
-              : ""
-          }`}
-        >
-          {calculateDaysLeft()}
+        <span className={`${styles.dueDateBubble} ${bubbleStyle}`}>
+          {daysLeft}
         </span>
       </div>
 

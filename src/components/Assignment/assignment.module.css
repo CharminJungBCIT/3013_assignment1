@@ -1,44 +1,15 @@
-/* Styling for completed checkboxes and delete buttons */
-.checkContainer {
-  width: 24px; /* Adjusted for better click area */
-  height: 24px;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-/* Non-completed state circle */
-.checkContainer div {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  border: 2px solid #4ea8de; /* Blue border */
-  background: none; /* No fill */
-}
-
-/* Completed state styles */
-.checkmark {
-  width: 24px;
-  height: 24px;
-  background-color: purple; /* Filled purple background */
-  color: white; /* White checkmark color */
+.assignment {
+  width: 100%;
+  background: #262626;
+  border: 1px solid #333333;
+  padding: 16px;
+  border-radius: 8px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  border-radius: 50%; /* Circle shape */
+  justify-content: space-between;
+  gap: 12px;
 }
 
-/* Hide the circle when completed */
-.circle {
-  display: none; /* Hide the non-completed circle */
-}
-
-/* Change this class to apply when completed */
-.completed {
-  display: block; /* Ensure checkmark is displayed */
-}
-
-/* Assignments text styling */
 .assignment p {
   font-size: 14px;
   line-height: 19px;
@@ -46,27 +17,61 @@
   margin-right: auto;
 }
 
-.textCompleted {
-  color: #808080; /* Grey color for completed text */
-  text-decoration: line-through; /* Strikethrough for completed assignments */
+p.textCompleted {
+  color: #808080;
+  text-decoration: line-through;
 }
 
-/* Styling for the delete button */
+.checkContainer {
+  width: 18px;
+  height: 18px;
+  background: none;
+  border: none;
+}
+
+.checkContainer div {
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  border: 2px solid #4ea8de;
+}
+
+.checkContainer svg {
+  width: 100%;
+  height: 100%;
+  color: #5e60ce;
+}
+
 .deleteButton {
   background: none;
   border: none;
   color: #808080;
-  cursor: pointer;
+}
+.checkmark {
+  color: #5dedeb; /* Color for the checkmark */
+  font-size: 18px; /* Adjust size as needed */
+  text-align: center;
+}
+.dueDateBubble {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  color: #fff; /* Text color */
+  margin-left: 12px; /* Space between the text and bubble */
+  border: 2px solid transparent; /* Default border */
 }
 
-/* Due date bubble styles */
-.dueDateBubble {
-  padding: 5px 10px;
-  border-radius: 12px;
-  background-color: green;
-  color: white;
+.dueDays {
+  background-color: #4ea8de; /* Color for days left */
+  border-color: #3b8bba; /* Optional border color for days left */
 }
 
 .dueSoon {
-  background-color: red; /* Red background for overdue */
+  background-color: #ff0000; /* Red background for 'Tomorrow' */
+  border-color: #ff4d4d; /* Border color for 'Tomorrow' */
+}
+
+.dueNow {
+  background-color: #ff7f50; /* Color for 'Due: Now' */
+  border-color: #ff4d4d; /* Border color for 'Due: Now' */
 }
