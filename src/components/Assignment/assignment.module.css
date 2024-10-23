@@ -1,0 +1,87 @@
+.assignment {
+  width: 100%;
+  background: #262626;
+  border: 1px solid #333333;
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.assignment p {
+  font-size: 14px;
+  line-height: 19px;
+  color: #f2f2f2;
+  margin-right: auto;
+}
+
+p.textCompleted {
+  color: #808080;
+  text-decoration: line-through;
+}
+
+.checkContainer {
+  width: 18px;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.checkContainer div {
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  border: 2px solid #4ea8de;
+}
+
+.checkContainer svg {
+  width: 100%;
+  height: 100%;
+  color: #5e60ce;
+}
+
+.deleteButton {
+  background: none;
+  border: none;
+  color: #808080;
+  cursor: pointer;
+}
+.circle {
+  width: 20px;
+  height: 20px;
+  border: 2px solid blue;
+  border-radius: 50%;
+}
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  background-color: purple;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.completedText {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+.dueDateContainer {
+  margin-left: 10px;
+}
+
+.dueDateBubble {
+  padding: 5px 10px;
+  border-radius: 12px;
+  background-color: green;
+  color: white;
+}
+
+.dueSoon {
+  background-color: red;
+}
